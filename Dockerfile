@@ -4,7 +4,7 @@
 # RUN apt-get update && apt-get install --assume-yes --fix-missing python-pip git
 
 # Clone repository to /app folder in the container image
-# RUN git clone https://github.com/deepakiim/Deploy-machine-learning-model.git /app
+# RUN git clone https://github.com/Kashyapdevesh/Flight_Delay_Prediction.git /app
 
 #####################################################################################################################
 FROM python:3.6.6-slim
