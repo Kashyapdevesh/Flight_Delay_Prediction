@@ -1,4 +1,11 @@
-# Flight_Delay_Prediction
+## Flight_Delay_Prediction
+
+# Usage of the API  
+
+This example considers that the API was launched locally without docker and 
+with the default parameters (`localhost` at port `5000`) and its calling 
+the example model.
+
 # Docker commands 
 Note: Docker tag or id should be always specified in the end of the docker command to avoid issues
 1. Build docker image from Dockerfile
@@ -28,4 +35,32 @@ The ENTRYPOINT specifies a command that will always be executed when the contain
 Docker has a default ENTRYPOINT which is /bin/sh -c but does not have a default CMD.
 --entrypoint in docker run will overwrite the default entry point
     ```docker run -it --entrypoint /bin/bash <image>```
+
+
+### Check the API's health status
+
+Endpoint: `/health`
+
+```bash
+$ curl -X GET http://localhost:5000/health
+up
+```
+
+### Is model ready?
+
+Endpoint: `/ready`
+
+```bash
+$ curl -X GET http://localhost:5000/ready
+ready
+```
+
+
+### Compute predictions
+
+Endpoint: `/predict`
+
+```bash
+
+```
 
