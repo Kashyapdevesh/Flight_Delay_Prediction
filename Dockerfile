@@ -1,4 +1,6 @@
 # FROM ubuntu uncomment if you want to use ubuntu
+#FROM ubuntu:latest
+#RUN apt-get -y update
 
 # Install pip and git
 #RUN apt-get update && apt-get install --assume-yes --fix-missing python-pip git
