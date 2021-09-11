@@ -73,9 +73,9 @@ if __name__ == '__main__':
         port = 80
 
     try:
-        clf = joblib.load(model_file_name)
+        clf_final = joblib.load(clf)
         print('model loaded')
-        model_columns = joblib.load(model_columns_file_name)
+        model_columns_final = joblib.load(model_columns)
         print('model columns loaded')
 
     except Exception as e:
