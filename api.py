@@ -15,7 +15,7 @@ app = Flask(__name__)
 DEBUG = os.environ.get('DEBUG', False)
 MODEL_NAME = os.environ.get('MODEL_NAME', 'model.joblib')
 ENVIRONMENT = os.environ.get('ENVIRONMENT', 'local')
-SERVICE_START_TIMESTAMP = time()
+SERVICE_START_TIMESTAMP = time.time()
 # inputs
 training_data = 'data/final.csv'
 include = ['Temperature','Dew Point','Humidity','Wind Speed','Pressure','Precipitation','month']
@@ -65,8 +65,7 @@ def wipe():
 def health_check():
     return flask.Response("up", status=200)
 
-@application.route('/service-info')
-@returns_json
+@app.route('/service-info')
 def service_info():
     info = {
         'version-template': __version__,
