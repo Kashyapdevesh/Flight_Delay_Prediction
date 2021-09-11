@@ -15,7 +15,7 @@ app = Flask(__name__)
 DEBUG = os.environ.get('DEBUG', False)
 MODEL_NAME = os.environ.get('MODEL_NAME', 'model.joblib')
 ENVIRONMENT = os.environ.get('ENVIRONMENT', 'local')
-
+SERVICE_START_TIMESTAMP = time()
 # inputs
 training_data = 'data/final.csv'
 include = ['Temperature','Dew Point','Humidity','Wind Speed','Pressure','Precipitation','month']
@@ -25,6 +25,9 @@ model_directory = 'model'
 clf = f'{model_directory}/model.joblib'
 model_columns = f'{model_directory}/model_columns.joblib'
 
+@app.route('/')
+def home():
+    return "Hi, Welcome to Flight Delay Prediction API"
 
 @app.route('/predict', methods=['POST']) # Create http://host:port/predict POST end point
 def predict():
@@ -62,6 +65,16 @@ def wipe():
 def health_check():
     return flask.Response("up", status=200)
 
+@application.route('/service-info')
+@returns_json
+def service_info():
+    info = {
+        'version-template': __version__,
+        'running-since': SERVICE_START_TIMESTAMP,
+        'serving-model-file': MODEL_NAME,
+        'debug': DEBUG
+    }
+    return info
 
 
 if __name__ == '__main__':

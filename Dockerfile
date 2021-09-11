@@ -12,23 +12,28 @@
 FROM python:3
 
 # Mount current directory to /app in the container image
-VOLUME ./:app/
+#VOLUME ./:app/
 
 # Copy local directory to /app in container
 # Dont use COPY * /app/ , * will lead to lose of folder structure in /app
-COPY . /app/
+#COPY . /app/
 
 # Change WORKDIR
-WORKDIR /app
+WORKDIR /app/
 
 # Install dependencies
 # use --proxy http://<proxy host>:port if you have proxy
-RUN pip install -r requirements.txt
+COPY requirements.txt /app/
+RUN pip install -r ./requirements.txt
 
+
+COPY api.py /app/
+COPY model/model.joblib /app/models/
+COPY model/model_columns.joblib /app/models/
 # In Docker, the containers themselves can have applications running on ports. To access these applications, we need to expose the containers internal port and bind the exposed port to a specified port on the host.
 # Expose port and run the application when the container is started
-EXPOSE 9999:9999
-ENTRYPOINT python api.py 9999
+EXPOSE 5002
+ENTRYPOINT python ./api.py 
 # CMD ["api.py"]
 
 
