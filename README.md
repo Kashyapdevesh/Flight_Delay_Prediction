@@ -3,7 +3,7 @@
 # Usage of the API  
 
 This example considers that the API was launched locally without docker and 
-with the default parameters (`localhost` at port `5000`) and its calling 
+with the default parameters (`localhost` at port `5003`) and its calling 
 the example model.
 
 # Docker commands 
