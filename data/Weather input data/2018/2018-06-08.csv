@@ -1,0 +1,29 @@
+,Time,Temperature,Dew Point,Humidity,Wind Speed,Wind Gust,Pressure,Precipitation,Wind,Condition,Date
+0,1:22 AM,78,64,62,0,0,29.00,0.0,CALM,Mostly Cloudy,2018-06-08
+1,2:22 AM,78,65,64,6,0,29.00,0.0,ENE,Mostly Cloudy,2018-06-08
+2,3:22 AM,75,65,71,7,0,28.99,0.0,E,Mostly Cloudy,2018-06-08
+3,4:22 AM,74,65,73,6,0,28.99,0.0,E,Partly Cloudy,2018-06-08
+4,5:22 AM,73,65,76,5,0,28.99,0.0,ENE,Partly Cloudy,2018-06-08
+5,6:22 AM,73,65,76,6,0,28.99,0.0,E,Partly Cloudy,2018-06-08
+6,6:22 AM,75,65,71,5,0,29.02,0.0,NE,Mostly Cloudy,2018-06-08
+7,7:22 AM,76,66,71,8,0,29.05,0.0,ENE,Mostly Cloudy,2018-06-08
+8,8:22 AM,75,66,73,7,0,29.07,0.0,ENE,Mostly Cloudy,2018-06-08
+9,9:22 AM,77,67,71,7,0,29.08,0.0,E,Mostly Cloudy,2018-06-08
+10,10:22 AM,81,68,65,8,0,29.07,0.0,E,Partly Cloudy,2018-06-08
+11,11:22 AM,85,68,57,7,0,29.07,0.0,E,Fair,2018-06-08
+12,12:22 PM,87,66,49,8,0,29.07,0.0,E,Partly Cloudy,2018-06-08
+13,1:22 PM,89,67,48,6,0,29.06,0.0,E,Mostly Cloudy,2018-06-08
+14,2:22 PM,86,66,51,0,0,29.03,0.0,CALM,Mostly Cloudy,2018-06-08
+15,3:09 PM,86,66,51,14,0,29.02,0.0,N,Light Rain with Thunder,2018-06-08
+16,3:22 PM,83,68,60,13,0,29.02,0.0,N,T-Storm,2018-06-08
+17,3:42 PM,84,63,49,10,0,29.03,0.0,N,Light Rain,2018-06-08
+18,4:19 PM,82,64,54,15,0,29.02,0.0,NNE,Thunder in the Vicinity,2018-06-08
+19,4:22 PM,82,64,54,14,0,29.02,0.0,NNE,Thunder in the Vicinity,2018-06-08
+20,5:14 PM,84,63,49,5,0,29.02,0.0,SE,Mostly Cloudy,2018-06-08
+21,5:22 PM,83,65,54,7,0,29.01,0.0,SSE,Mostly Cloudy,2018-06-08
+22,6:22 PM,83,65,54,8,0,29.01,0.0,S,Mostly Cloudy,2018-06-08
+23,7:22 PM,76,65,69,6,0,29.03,0.0,S,Mostly Cloudy,2018-06-08
+24,9:22 PM,76,65,69,0,0,29.02,0.0,CALM,Mostly Cloudy,2018-06-08
+25,10:22 PM,76,66,71,3,0,29.04,0.0,SSE,Mostly Cloudy,2018-06-08
+26,11:22 PM,76,66,71,5,0,29.06,0.0,E,Mostly Cloudy,2018-06-08
+27,12:22 AM,77,66,69,0,0,29.06,0.0,CALM,Mostly Cloudy,2018-06-08
