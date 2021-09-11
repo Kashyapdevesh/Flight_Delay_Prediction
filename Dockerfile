@@ -28,8 +28,8 @@ RUN pip install -r ./requirements.txt
 
 
 COPY api.py /app/
-COPY model/model.joblib /app/models/
-COPY model/model_columns.joblib /app/models/
+COPY model/Model.pkl /app/models/
+COPY model/columnnames.pkl /app/models/
 # In Docker, the containers themselves can have applications running on ports. To access these applications, we need to expose the containers internal port and bind the exposed port to a specified port on the host.
 # Expose port and run the application when the container is started
 EXPOSE 5002
