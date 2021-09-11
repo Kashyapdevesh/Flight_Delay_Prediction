@@ -10,12 +10,12 @@ the example model.
 Note: Docker tag or id should be always specified in the end of the docker command to avoid issues
 1. Build docker image from Dockerfile
 
-    ```docker build -t "<app name>" -f docker-files/Dockerfile .```
-    ```eg: docker build -t "ml_app" -f docker-files/Dockerfile .```
+    ```docker build -t "<app name>" -f ./Dockerfile .```
+    ```eg: docker build -t "ml_app" -f ./Dockerfile .```
 
 2. Run the docker container after build
 
-    ```docker run -p 9999:9999 ml_app  # -p to make the port externally avaiable for browsers```
+    ```docker run -p 5003 ml_app  # -p to make the port externally avaiable for browsers```
 
 3. Show all running containers
     
@@ -46,21 +46,40 @@ $ curl -X GET http://localhost:5000/health
 up
 ```
 
-### Is model ready?
+### Wiping models after use (NOTICE: Future Scope for multi- model approach)
 
-Endpoint: `/ready`
-
-```bash
-$ curl -X GET http://localhost:5000/ready
-ready
-```
-
-
-### Compute predictions
-
-Endpoint: `/predict`
+Endpoint: `/wipe`
 
 ```bash
-
+$ curl -X GET http://localhost:5000/wipe
+Model wiped
 ```
 
+While all the above API requests can be accesed via simple HTTP 'GET' request, the prediction model requires input in JSON format accesible through 'POST' request as shown below :
+
+```bash
+[
+    {
+        "iataCode": "ATL",
+        "date": "2021-09-12",
+        "time": "16:25"
+    },
+    {
+        "iataCode": "JFK",
+        "date": "2021-09-13",
+        "time": "12:30"
+    }
+]
+
+
+```
+The API will provide output prediction in the same JSON format as shown below:
+
+```bash
+{
+    "Prediction": "45",
+    "Prediction": "12"
+}
+
+```
+Moreover, we have also provided provison for bulk predictions thorugh the same JSON requests.
