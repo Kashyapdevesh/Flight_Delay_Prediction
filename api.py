@@ -3,13 +3,18 @@ import os
 import shutil
 import time
 import traceback
+import flask
 
 from flask import Flask, request, jsonify
 import pandas as pd
-from sklearn.externals import joblib
+import joblib
 
 
 app = Flask(__name__)
+
+DEBUG = os.environ.get('DEBUG', False)
+MODEL_NAME = os.environ.get('MODEL_NAME', 'model.joblib')
+ENVIRONMENT = os.environ.get('ENVIRONMENT', 'local')
 
 # inputs
 training_data = 'data/final.csv'
@@ -58,13 +63,6 @@ def health_check():
     return flask.Response("up", status=200)
 
 
-@app.route('/ready')
-def readiness_check():
-    if model.is_ready():
-        return flask.Response("ready", status=200)
-    else:
-        return flask.Response("not ready", status=503)
-
 
 if __name__ == '__main__':
     try:
@@ -84,5 +82,8 @@ if __name__ == '__main__':
         print(str(e))
         clf = None
 
-    app.run(host='0.0.0.0', port=port, debug=False)
-
+	#app.run(host='0.0.0.0', port=port, debug=False)
+    app.run(
+        debug=DEBUG,
+        host=os.environ.get('HOST', 'localhost'),
+        port=os.environ.get('PORT', '5002'))

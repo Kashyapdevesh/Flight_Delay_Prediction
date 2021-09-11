@@ -108,5 +108,3 @@ ypred = main_model_function(x_train,ytrain,x_test,ytest)
 model_columns_file_name = './model_columns.joblib'
 model_columns = list(x_test.columns)
 joblib.dump(model_columns, model_columns_file_name)
-
-
