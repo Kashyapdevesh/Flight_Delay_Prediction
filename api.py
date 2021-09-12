@@ -142,7 +142,4 @@ if __name__ == '__main__':
         print(str(e))
 
 	#app.run(host='0.0.0.0', port=port, debug=False)
-    app.run(
-        debug=DEBUG,
-        host=os.environ.get('HOST', 'localhost'),
-        port=os.environ.get('PORT', '5004'))
+    app.run(host='0.0.0.0')
