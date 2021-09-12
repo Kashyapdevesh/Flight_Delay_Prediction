@@ -29,7 +29,7 @@ RUN pip install -r ./requirements.txt
 
 COPY api.py /app/
 COPY model/Model.pkl /app/models/
-COPY model/columnnames.pkl /app/models/
+COPY model/scaler.pkl /app/models/
 COPY ./airports.json /app/
 # In Docker, the containers themselves can have applications running on ports. To access these applications, we need to expose the containers internal port and bind the exposed port to a specified port on the host.
 # Expose port and run the application when the container is started
