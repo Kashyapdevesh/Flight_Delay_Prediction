@@ -39,14 +39,14 @@ def home():
 def predict():
     if reg:
         try:
-            json_ = request.json #capture the json from POST
+            json_ = request.json
             if json_:
             	if 'iataCode' in json_:
-            		iataCode = json_['iataCode']
+            		iataCode = json_[19:22]
             	if 'date' in json_:
-            		date = json_['date'] #IN YYYY-MM-DD FORMAT
+            		date = json_[38:48] #IN YYYY-MM-DD FORMAT
             	if 'time' in json_:
-            		time =json_['time'] #IN HH:MM FORMAT
+            		time =json_[64:69] #IN HH:MM FORMAT
             	with open('./airports.json') as json_file:
             		data=json.load(json_file)
             	airport = data[iataCode]
