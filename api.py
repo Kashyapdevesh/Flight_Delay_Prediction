@@ -5,8 +5,9 @@ import time
 import traceback
 import flask
 import json
+import numpy as np
 
-from flask import Flask, request, jsonify
+from flask import Flask, request,jsonify
 import pandas as pd
 import joblib
 
@@ -27,8 +28,8 @@ include = ['Temperature','Dew Point','Humidity','Wind Speed','Pressure','Precipi
 dependent_variable = 'WEATHER_DELAY'
 
 model_directory = 'model'
-clf = f'{model_directory}/Model.pkl'
-model_columns = f'{model_directory}/columnnames.pkl'
+reg = f'{model_directory}/Model.pkl'
+scaler=f'{model_directory}/scaler.pkl'
 
 @app.route('/')
 def home():
@@ -36,7 +37,7 @@ def home():
 
 @app.route('/predict', methods=['POST']) # Create http://host:port/predict POST end point
 def predict():
-    if clf:
+    if reg:
         try:
             json_ = request.json #capture the json from POST
             if json_:
@@ -45,7 +46,7 @@ def predict():
             	if 'date' in json_:
             		date = json_['date'] #IN YYYY-MM-DD FORMAT
             	if 'time' in json_:
-            		time =json_['time'] #IN HH-MM FORMAT
+            		time =json_['time'] #IN HH:MM FORMAT
             	with open('./airports.json') as json_file:
             		data=json.load(json_file)
             	airport = data[iataCode]
@@ -55,7 +56,6 @@ def predict():
             		response=requests.get(url)
             		response.raise_for_status()
             		jsonResponse = response.json()
-            		print(jsonResponse["forecast"]["forecastday"][0]["date"])
             		d0=jsonResponse["forecast"]["forecastday"][0]["date"]
             		d1=jsonResponse["forecast"]["forecastday"][1]["date"]
             		d2=jsonResponse["forecast"]["forecastday"][2]["date"]
@@ -69,25 +69,25 @@ def predict():
             			idx=1
             		else:
             			idx=2
-            		Temperature= jsonResponse["forecast"]["forecastday"][idx]["day"]["avgtemp_c"]
+            		Temperature= jsonResponse["forecast"]["forecastday"][idx]["day"]["maxtemp_f"]
             		Dew_Point=jsonResponse["forecast"]["forecastday"][idx]["day"]["daily_will_it_snow"]
             		Humidity=jsonResponse["forecast"]["forecastday"][idx]["day"]["avghumidity"]
             		Wind_Speed=jsonResponse["forecast"]["forecastday"][idx]["day"]["maxwind_mph"]
             		Pressure=jsonResponse["forecast"]["forecastday"][idx]["day"]["maxwind_kph"]
             		Precipitation=jsonResponse["forecast"]["forecastday"][idx]["day"]["totalprecip_mm"]
-            		month=date[-5:-3]
-            		parameter = [Temperature,Dew_Point,Humidity,Wind_Speed,Pressure,Precipitation,'month']
+            		month=int(str(date[-5:-3]))
+            		hours=int(str(time[:-3]))
+            		parameter = [Temperature,Dew_Point,Humidity,Wind_Speed,Pressure,Precipitation,month,hours]
             				
             	except HTTPError as http_err:
             		print(f'HTTP error occurred: {http_err}')
             	except Exception as err:
             		print(f'Other error occurred: {err}')
-            	json_2=	json.dumps(parameter)
-            	query = pd.get_dummies(pd.DataFrame(json_2))
-            	query = query.reindex(columns=model_columns, fill_value=0)
-            	prediction = list(clf.predict(query))
-
-            return jsonify({'prediction': [int(x) for x in prediction]})
+            	arr=np.array(parameter).reshape(1,-1)
+            	x_test = scaler_final.transform(arr)
+            	result=reg_final.predict(x_test)
+            	lists=result.tolist()
+            	return json.dumps(lists)
 
         except Exception as e:
 
@@ -131,19 +131,18 @@ if __name__ == '__main__':
         port = 80
 
     try:
-        clf_final = joblib.load(clf)
-        print('model loaded')
-        model_columns_final = joblib.load(model_columns)
-        print('model columns loaded')
+    	reg_final = joblib.load(reg)
+    	print('model loaded')
+    	scaler_final = joblib.load(scaler)
+    	print('scaler loaded')
 
     except Exception as e:
         print('No model here')
         print('Train first')
         print(str(e))
-        clf = None
 
 	#app.run(host='0.0.0.0', port=port, debug=False)
     app.run(
         debug=DEBUG,
         host=os.environ.get('HOST', 'localhost'),
-        port=os.environ.get('PORT', '5003'))
+        port=os.environ.get('PORT', '5004'))
