@@ -5,6 +5,10 @@ services:
       context: .
       dockerfile: Dockerfile
     ports:
-      - "5003"
+      - "5004"
     volumes:
       - .:/app
+      
+      
+      
+
