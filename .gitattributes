@@ -1,2 +1,5 @@
 * linguist-vendored
 *.py linguist-vendored=false
+*Dockerfile linguist-vendored=false
+*.json linguist-vendored=false
+*.txt linguist-vendored=false
