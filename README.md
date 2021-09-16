@@ -44,6 +44,7 @@ Table of contents
    * [Docker Commands](#Docker-Commands)
    * [Check the API's health status](#Check-the-API-health-status)
    * [Wiping models after use](#Wiping-models-after-use)
+   * [Data Input Format](#Data-Input-Format)
    * [Alibaba products' used](#Alibaba-products-used)
 <!--te-->
 
@@ -290,7 +291,7 @@ Endpoint: `/wipe`
 $ curl -X GET http://localhost:5000/wipe
 Model wiped
 ```
-
+## Data Input Format
 While all the above API requests can be accesed via simple HTTP 'GET' request, the prediction model requires input in JSON format accesible through 'POST' request as shown below :
 
 ```json
