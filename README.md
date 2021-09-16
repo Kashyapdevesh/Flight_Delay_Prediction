@@ -73,7 +73,8 @@ For our final model we used an ensemble of various models listed below individua
 
 The complete model is present in https://github.com/Kashyapdevesh/Flight_Delay_Prediction/blob/main/notebooks/Final/Final%20model.ipynb 
 
-## Lasso:-In this approach, we employed a grid search for the best Value for Lambda( 入 ) and S.
+## Lasso: 
+In this approach, we employed a grid search for the best Value for Lambda( 入 ) and S.
 Initially, we calculated the method of lasso regression to find the best suited values of βi which are the coefficients for the independent variables in the model 
 ```python
 Ŷ =  Σ βi. Xi + c  where we reduce the RSS(Residual sum of squares) 
