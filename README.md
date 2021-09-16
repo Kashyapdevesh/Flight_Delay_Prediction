@@ -33,7 +33,7 @@ Table of contents
 <!--ts-->
    * [About the predictive model](#About-the-predictive-model)
    * [Sample training data](#Sample-training-data)
-   * [Model Parmaters'](#Model-Parmaters')
+   * [Model Parmaters'](#Model-Parmaters)
    * [Model Methodology](#Model-Methodology)
        * [Lasso](#Lasso)
        * [Random Forest](#Random-Forest)
@@ -42,7 +42,7 @@ Table of contents
        * [Final Ensembled Model](#Final-Ensembled-Model)
    * [Usage of the API](#Usage-of-the-API)
    * [Docker Commands](#Docker-Commands)
-   * [Check the API's health status](#Check-the-API's-health-status)
+   * [Check the API's health status](#Check-the-API-health-status)
    * [Wiping models after use](#Wiping-models-after-use)
    * [Alibaba products' used](#Alibaba-products-used)
 <!--te-->
@@ -73,7 +73,7 @@ For our final model we used an ensemble of various models listed below individua
 
 The complete model is present in https://github.com/Kashyapdevesh/Flight_Delay_Prediction/blob/main/notebooks/Final/Final%20model.ipynb 
 
-1.**Lasso** :-In this approach, we employed a grid search for the best Value for Lambda( 入 ) and S.
+## Lasso:-In this approach, we employed a grid search for the best Value for Lambda( 入 ) and S.
 Initially, we calculated the method of lasso regression to find the best suited values of βi which are the coefficients for the independent variables in the model 
 ```python
 Ŷ =  Σ βi. Xi + c  where we reduce the RSS(Residual sum of squares) 
@@ -93,7 +93,8 @@ lassomodel=Lasso(alpha=lassocv.best_param_['alpha'],max_iter=1e7)
 
 ![](https://github.com/shaurysrivastav27/Flight_Delay_Prediction/blob/main/notebooks/Final/plots/lasso2.png)
 
-2.**Random Forest** : The next model we used was random forest regressor, which uses 
+## Random Forest: 
+The next model we used was random forest regressor, which uses 
 
 we could calculate
 f ˆ 1 (x), f ˆ 2 (x), . . . , f ˆ B (x) using B separate training sets, and average them
@@ -110,7 +111,8 @@ In our code we employed it as follows:
 rfc = RandomForestRegressor(n_estimators=200 , max_depth=15)
 ```
 
-3.**XGboost Regressor**: The next approach, we used was similar to the random forest approach, in the Extreme gradient boosting regression we make various decision trees for the purpose of predictions and the learning rate is decided based upon the descent, it adjusts itself with every step. 
+## XGboost Regressor: 
+The next approach, we used was similar to the random forest approach, in the Extreme gradient boosting regression we make various decision trees for the purpose of predictions and the learning rate is decided based upon the descent, it adjusts itself with every step. 
 We used the GridSearchCV for finding the best learning rate for the algo to work hence we employed the following code in python : 
 
 ```python
@@ -121,7 +123,9 @@ cvxg =GridSearchCV(XGBRegressor(n_estimators=150),param_grid={"learning_rate":lr
  ```
   ![](https://github.com/shaurysrivastav27/Flight_Delay_Prediction/blob/main/notebooks/Final/plots/xgbregressor2.png)
 
-4. **Gaussian mixture networks**: The last algorithm we used was gaussian mixture regression which is widely used for Multivariate Nonparametric regression problems such as the given problem.
+## Gaussian mixture networks: 
+
+The last algorithm we used was gaussian mixture regression which is widely used for Multivariate Nonparametric regression problems such as the given problem.
 In this approach, we use the probabilistic approach rather than direct values prediction method . We define the model as : 
 ```python
      m(x) = E[Y |X =x ] (expected value of Y given  X= x) 
@@ -142,7 +146,7 @@ for i in range(1,40):
  
 ![](https://github.com/shaurysrivastav27/Flight_Delay_Prediction/blob/main/notebooks/Final/plots/plot.jpg)
  
- 5. Final Ensembled Model
+## Final Ensembled Model
  
 Finally, we had  to move beyond linearity to get our solution. We used the method of ensembling / stacking to get our best results using the StackingCVRegressor
 
@@ -263,7 +267,7 @@ sudo docker run -it --entrypoint /bin/bash <image>
 ```
 
 
-## Check the API's health status
+## Check the API health status
 
 Endpoint: `/health`
 
