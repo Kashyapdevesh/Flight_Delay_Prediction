@@ -49,11 +49,11 @@ Table of contents
 
 ## About the predictive model
 
-#### Sample training data
+## Sample training data
 ![](https://github.com/shaurysrivastav27/Flight_Delay_Prediction/blob/main/notebooks/Final/plots/the%20data.png)
 
 
-#### Model Parmaters'
+## Model Parmaters'
 
 
 The independent variables :- **Temperature**, **dew point**, **humidity**, **wind speed**, **precipitation**, **month**, **hours**. 
@@ -68,7 +68,7 @@ The relationship between the variables is non-linear.
 7. **Month and hours** : The month (in numerical form) and hours (24 hour format) 
 
 
-#### Model Methodology
+## Model Methodology
 For our final model we used an ensemble of various models listed below individually:
 
 The complete model is present in https://github.com/Kashyapdevesh/Flight_Delay_Prediction/blob/main/notebooks/Final/Final%20model.ipynb 
