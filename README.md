@@ -2,30 +2,7 @@
 
 The API in this repository is our team's submission for Alibaba Global AI Challenge 2021 finals.The theme of this challenge was, "Intelligent Weather Forecast for Better Life" and we were required to propose state of the art solutions pertaining to the theme.
 
-
-
-In this project we developed a high level customizable API which could be used to predict flight delay on any airport around the world. Initially, the model trained itself by scraping past weather data and flight details of the given airport. Then, it containerized itself and set up a production grade flask server incorporated with nginx and gunicorn which is further deployed to Alibaba's cloud service and published in **Alibaba's API marketplace**.
-
-
-
-Morever, the process mentioned above is automated with the use of Alibaba workflow in this github repository, so that during the official release the changes could easily be reflected in the production API without any delay or overhead.
-
-
-
-During construction of this project, the main focus was on flexibility, so that it could easily
-be used by professionals and beginners alike. Moreover, we have tried to keep the API as
-user-friendly as possible while maintaining its robustness.
-
-The developed API can later be used for a multitude of purposes, such as:
-
-1. Creating a mobile/web app which depicts flight weather delays to customers with a very high accuracy
-2. Integration with airline maintenance systems to predict optimum time for flight maintenance
-3. Integration with Air Traffic Control (ATC) for better management
-4. Integration with airline booking system to increase efficiency
-
-Last but not the least, our model is better than existing options as it’s easily scalable, not
-much interference is required after initial setup and it gives almost accurate prediction for
-delayed flights.
+This contest encouraged developers and innovative enterprises around the world to think outside the box, break boundaries, and leverage accessible weather data (including air quality monitoring data, enterprise carbon emission data, and other environmental data) to analyze the interplay between meteorological changes and various aspects of life, probe into the correlation between multi-source heterogeneous data, and raise the public awareness of the value of AI-assisted weather forecasting and green innovations.
 
 Table of contents
 =================
@@ -49,6 +26,29 @@ Table of contents
 <!--te-->
 
 ## About the predictive model
+In this project we developed a high level customizable API which could be used to predict flight delay on any airport around the world. Initially, the model trained itself by scraping past weather data and flight details of the given airport. Then, it containerized itself and set up a production grade flask server incorporated with nginx and gunicorn which is further deployed to Alibaba's cloud service and published in **Alibaba's API marketplace**.
+
+
+
+Morever, the process mentioned above is automated with the use of Alibaba workflow in this github repository, so that during the official release the changes could easily be reflected in the production API without any delay or overhead.
+
+
+
+During construction of this project, the main focus was on flexibility, so that it could easily
+be used by professionals and beginners alike. Moreover, we have tried to keep the API as
+user-friendly as possible while maintaining its robustness.
+
+The developed API can later be used for a multitude of purposes, such as:
+
+1. Creating a mobile/web app which depicts flight weather delays to customers with a very high accuracy
+2. Integration with airline maintenance systems to predict optimum time for flight maintenance
+3. Integration with Air Traffic Control (ATC) for better management
+4. Integration with airline booking system to increase efficiency
+
+Last but not the least, our model is better than existing options as it’s easily scalable, not
+much interference is required after initial setup and it gives almost accurate prediction for
+delayed flights.
+
 
 ## Sample training data
 ![](https://github.com/shaurysrivastav27/Flight_Delay_Prediction/blob/main/notebooks/Final/plots/the%20data.png)
